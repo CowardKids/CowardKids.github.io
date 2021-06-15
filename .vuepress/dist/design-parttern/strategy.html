@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>策略模式 | 前端笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="基础面试笔记">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.ae2fffaf.css" as="style"><link rel="preload" href="/blog/assets/js/app.fa5ddb5e.js" as="script"><link rel="preload" href="/blog/assets/js/2.5980a252.js" as="script"><link rel="preload" href="/blog/assets/js/15.66e8c76c.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.dee1bd7d.js"><link rel="prefetch" href="/blog/assets/js/11.44cd1fd1.js"><link rel="prefetch" href="/blog/assets/js/12.05cffcc5.js"><link rel="prefetch" href="/blog/assets/js/13.a52d2191.js"><link rel="prefetch" href="/blog/assets/js/14.5250aabe.js"><link rel="prefetch" href="/blog/assets/js/16.1c6fe013.js"><link rel="prefetch" href="/blog/assets/js/17.27cbe6b0.js"><link rel="prefetch" href="/blog/assets/js/18.155fe579.js"><link rel="prefetch" href="/blog/assets/js/19.487cf63c.js"><link rel="prefetch" href="/blog/assets/js/20.057d760b.js"><link rel="prefetch" href="/blog/assets/js/21.2c20e62c.js"><link rel="prefetch" href="/blog/assets/js/22.fb59aa19.js"><link rel="prefetch" href="/blog/assets/js/3.5cdcf667.js"><link rel="prefetch" href="/blog/assets/js/4.4409fb69.js"><link rel="prefetch" href="/blog/assets/js/5.c2e57c27.js"><link rel="prefetch" href="/blog/assets/js/6.add12f9c.js"><link rel="prefetch" href="/blog/assets/js/7.706df521.js"><link rel="prefetch" href="/blog/assets/js/8.de1402f8.js"><link rel="prefetch" href="/blog/assets/js/9.0a57c67a.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.ae2fffaf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">前端笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/GitHubajmx/learn_note.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/GitHubajmx/learn_note.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/html.html" class="sidebar-link">HTML 基础</a></li><li><a href="/blog/css.html" class="sidebar-link">CSS 基础</a></li><li><a href="/blog/js.html" class="sidebar-link">JS基础</a></li><li><a href="/blog/algorithm.html" class="sidebar-link">JS算法</a></li><li><a href="/blog/vue.html" class="sidebar-link">vue</a></li><li><a href="/blog/brower.html" class="sidebar-link">浏览器相关</a></li><li><a href="/blog/webpack.html" class="sidebar-link">webpack 知识</a></li><li><a href="/blog/optimization.html" class="sidebar-link">性能优化</a></li><li><a href="/blog/git.html" class="sidebar-link">git 使用以及规范</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="策略模式"><a href="#策略模式" class="header-anchor">#</a> 策略模式</h1> <h2 id="策略模式是啥"><a href="#策略模式是啥" class="header-anchor">#</a> 策略模式是啥?</h2> <p>先来一个枯燥的定义: 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</p> <p>我: 啥玩意??? 直接告诉我它能干嘛，什么情况下要用它，用了它能给我带来什么好处就完了！</p> <h2 id="作用-它能干嘛"><a href="#作用-它能干嘛" class="header-anchor">#</a> 作用: 它能干嘛？</h2> <p>小朋友，你是否有很多if?</p> <p>笼统的来说，策略模式就是可以让原本一大堆的 <code>if-else</code> 变得更容易维护和扩展。免去我们深入原来的代码进行破坏性的修改；同时如果其他地方需要复用这些逻辑，不需要到处 <code>ctrl+c ctrl+v</code> 这样贴狗皮膏。(开放-封闭原则)</p> <h2 id="使用场景"><a href="#使用场景" class="header-anchor">#</a> 使用场景</h2> <p>如果我们的代码中有很多<code>判断逻辑</code>,就需要考虑是否用策略模式了。</p> <ul><li><s>抄一个</s> 参考一个例子</li></ul> <p>需求: 根据员工的工资基数以及年底绩效情况来发放的。如：绩效为S的年终奖有4倍工资、绩效为A的年终奖有3倍工资，绩效为B的年终奖只能有2倍的工资。这种逻辑我们可以用基本代码实现</p> <div class="language- extra-class"><pre class="language-text"><code>// 很耿直的写一个函数，然后直接传参得出结果，简单粗暴
+
+var calculateBonus = function (performanceLevel, salary) {
+    if (performanceLevel === 'S') {
+        return salary * 4;
+    };
+    if (performanceLevel === 'A') {
+        return salary * 3;
+    };
+    if (performanceLevel === 'B') {
+        return salary * 2;
+    };
+}
+
+//获得绩效为B的员工 假设该员工工资为 10000
+calculateBonus('B', 10000); -&gt; 奖金 20000
+
+//获得绩效为S的员工 假设该员工工资为 10000
+calculateBonus('S', 10000); -&gt; 奖金 40000
+
+</code></pre></div><p>这段代码虽然实现了我们想要的功能，但是很局限，有以下几种缺点：</p> <ul><li>包含了过多的if-else语句，使函数过于庞大。</li> <li>calculateBonus函数缺乏弹性，如果需要新增加不同的绩效等级，需要更改其内部实现，违反了开放-封闭原则。</li> <li>算法复用性差，如果其他地方需要用到这种计算规则，只能重新输出（复制、粘贴）。</li></ul> <p>策略模式就是来专制这种<code>胖逻辑</code>的。</p> <h2 id="怎么用"><a href="#怎么用" class="header-anchor">#</a> 怎么用</h2> <ol><li>编写策略对象</li></ol> <p>将各个奖金的计算方法，集中写到一个对象里</p> <div class="language- extra-class"><pre class="language-text"><code>//策略对象
+var strategies = {
+    //一系列计算逻辑
+    &quot;S&quot; : function ( salary ) {
+        return salary * 4;
+    },
+    &quot;A&quot; : function ( salary ) {
+        return salary * 3;
+    },
+    &quot;B&quot; : function ( salary ) {
+        return salary * 2;
+    }
+};
+</code></pre></div><ol start="2"><li></li></ol></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.fa5ddb5e.js" defer></script><script src="/blog/assets/js/2.5980a252.js" defer></script><script src="/blog/assets/js/15.66e8c76c.js" defer></script>
+  </body>
+</html>
